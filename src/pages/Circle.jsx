@@ -4,7 +4,7 @@ import { Tween } from 'gsap/gsap-core';
 
 function Circle() {
     const circleRedRef = useRef(null);
-    const circleBlueRef=useRef()
+    const circleBlueRef=useRef(null)
     const [isHovered, setIsHovered] = useState(false);
     const [inner,setInnerhtml]=useState('')
 
@@ -19,7 +19,6 @@ function Circle() {
             Tween.to(circleRedRef.current, 1, { scale: 1, ease: Power3.easeInOut,rotate:-160});
         }
     }, [isHovered]);
-
     const handleClick = () => {
         // Handle click event
        
@@ -31,7 +30,17 @@ function Circle() {
         setIsHovered(true);
     };
     const handleMouseEnter2=()=>{
-
+        Tween.to(
+            circleBlueRef.current,
+            2,
+            {
+              opacity:1,
+              x:-550,
+              ease:Power3.easeInOut,
+              rotate:360,
+              delay:1
+            }
+           )
 
     }
 
@@ -43,7 +52,7 @@ function Circle() {
 
     return (
         <>
-        <div style={{display:'flex',height:'1/2',margin:'150px'}}>
+        <div onMouseEnter={handleMouseEnter2} style={{display:'flex',height:'1/2',margin:'150px'}}>
         <h1 style={{textAlign:'center'}}>Website</h1>
         <div
         ref={circleRedRef}
@@ -64,21 +73,27 @@ function Circle() {
         {inner}
     </div>
     </div>
-    <div style={{background:'white',height:'1500px',width:'100vw', margin:'0'}}>
+    <div  style={{background:'white',height:'1500px',width:'100vw', margin:'0'}}>
     <div
-  
+  ref={circleBlueRef}
     style={{
         width: '100px',
         height: '100px',
         opacity: 1,
-        background: 'black',
+        background: 'gray',
         borderRadius: '100%',
         cursor: 'pointer',
         display:'flex',
         justifyContent:'center'
+        ,position:'absolute',
+        top:'50%',
+        left:'50%'
     }}
     
     >
+    <div style={{width:'100%',background:'gray'}}>
+    
+    </div>
   
 </div>
     
