@@ -10,12 +10,13 @@ function Circle() {
 
     useEffect(() => {
         if (isHovered) {
-            Tween.to(circleRedRef.current, 0.8, { scale: 7, ease: Power3.easeOut });
+            Tween.to(circleRedRef.current, 1, { scale: 7, ease: Power3.easeOut,rotate:360 });
 
-            setInnerhtml(<p style={{color:'white', fontFamily:'-moz-initial'}}>WELCOME</p>);
+            setInnerhtml(<div><p style={{color:'black', fontFamily:'-moz-initial'}}>WELCOME</p>
+            <p style={{color:'gray', fontFamily:'-moz-initial'}}>To</p></div>);
 
         } else {
-            Tween.to(circleRedRef.current, 0.5, { scale: 1, ease: Power3.easeInOut });
+            Tween.to(circleRedRef.current, 1, { scale: 1, ease: Power3.easeInOut,rotate:-160});
         }
     }, [isHovered]);
 
@@ -42,39 +43,49 @@ function Circle() {
 
     return (
         <>
+        <div style={{display:'flex',height:'1/2',margin:'150px'}}>
+        <h1 style={{textAlign:'center'}}>Website</h1>
         <div
         ref={circleRedRef}
         style={{
             width: '100px',
             height: '100px',
             opacity: 1,
-            background: 'red',
+            background: 'white',
             borderRadius: '100%',
             cursor: 'pointer',
             display:'flex',
-            justifyContent:'center'
+            justifyContent:'center',
+            textAlign:'center'
         }}
         onClick={handleClick}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}>
         {inner}
     </div>
+    </div>
+    <div style={{background:'white',height:'1500px',width:'100vw', margin:'0'}}>
     <div
-   ref={circleBlueRef}
+  
     style={{
         width: '100px',
         height: '100px',
         opacity: 1,
-        background: 'blue',
+        background: 'black',
         borderRadius: '100%',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        display:'flex',
+        justifyContent:'center'
     }}
-    onMouseEnter={handleMouseEnter2}
-   >
+    
+    >
+  
 </div>
+    
+    </div>
 
-        </>
-      
+
+    </>
     );
 }
 
