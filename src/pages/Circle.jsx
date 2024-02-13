@@ -7,6 +7,7 @@ function Circle() {
     const circleBlueRef=useRef(null)
     const [isHovered, setIsHovered] = useState(false);
     const [inner,setInnerhtml]=useState('')
+    const [boxcontent,setBoxcontent]=useState('')
 
     useEffect(() => {
         if (isHovered) {
@@ -14,9 +15,32 @@ function Circle() {
 
             setInnerhtml(<div><p style={{color:'black', fontFamily:'-moz-initial'}}>WELCOME</p>
             <p style={{color:'gray', fontFamily:'-moz-initial'}}>To</p></div>);
-
+            Tween.to(
+                circleBlueRef.current,
+                2,
+                {
+                  opacity:1,
+                  x:-550,
+                  ease:Power3.easeInOut,
+                  rotate:360,
+                  delay:1
+                }
+               )
+       setBoxcontent(<div><h2 style={{color:'wheat',fontFamily:'-moz-initial'}}>NAME</h2></div>)
         } else {
-            Tween.to(circleRedRef.current, 1, { scale: 1, ease: Power3.easeInOut,rotate:-160});
+            Tween.to(circleRedRef.current, 1, { scale: 1, ease: Power3.easeInOut,rotate:-180});
+            Tween.to(
+                circleBlueRef.current,
+                2,
+                {
+                  opacity:1,
+                  x:0,
+                  ease:Power3.easeInOut,
+                  rotate:180,
+                  delay:1
+                }
+               )
+               setBoxcontent('')
         }
     }, [isHovered]);
     const handleClick = () => {
@@ -30,17 +54,8 @@ function Circle() {
         setIsHovered(true);
     };
     const handleMouseEnter2=()=>{
-        Tween.to(
-            circleBlueRef.current,
-            2,
-            {
-              opacity:1,
-              x:-550,
-              ease:Power3.easeInOut,
-              rotate:360,
-              delay:1
-            }
-           )
+      
+       
 
     }
 
@@ -74,6 +89,7 @@ function Circle() {
     </div>
     </div>
     <div  style={{background:'white',height:'1500px',width:'100vw', margin:'0'}}>
+   
     <div
   ref={circleBlueRef}
     style={{
@@ -91,8 +107,10 @@ function Circle() {
     }}
     
     >
-    <div style={{width:'100%',background:'gray'}}>
+   
     
+    <div style={{width:'100%',background:'gray',textAlign:'center'}}>
+   {boxcontent}
     </div>
   
 </div>

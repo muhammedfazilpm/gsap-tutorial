@@ -3,6 +3,7 @@ import './App.css'
 import Basic from './pages/Basic'
 import Circle from './pages/Circle'
 import Test from './pages/Windows'
+import Colour from './pages/Colour'
 import { BrowserRouter,Routes,Route } from 'react-router-dom'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
   <Route path='/' element={<Basic/>}/>
   <Route path='/circle' element={<Circle/>}/>
   <Route path='/test' element={<Test/>}/>
+  <Route path='/color' element={<Colour/>}/>
 
   
   </Routes>
