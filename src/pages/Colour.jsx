@@ -11,7 +11,7 @@ function Colour() {
     }
     useEffect(()=>{
 gsap.to(headerRef.current,{
-   duration:2,
+   duration:1,
    backgroundColor:background,
    ease:'none'
 })
